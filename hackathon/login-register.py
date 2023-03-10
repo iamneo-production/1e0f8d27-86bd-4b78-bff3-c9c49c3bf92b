@@ -7,7 +7,7 @@ app=Flask(__name__)
 CORS(app)
 
 #configuration of MYSQL
-cnx=mysql.connector.connect(user="root",password="examly",host="localhost")
+cnx=mysql.connector.connect(user="root",password="examly",host="localhost",database="team_13")
 cursor=cnx.cursor()
 
 #creating JWT token
@@ -47,7 +47,7 @@ def login_mentor():
             'token': token(email,password)
 
         }
-        return render_template('index.html')
+        return render_template('student/home.html')
     
     else:
         #email or password is invalid
@@ -58,17 +58,20 @@ def login_mentor():
         
         if userf:
             #wrong password
-            response={
-                'message':'Invalid password'
-            }
-            return make_response(jsonify(response),401)
+        
+            return redirect(url_for('login_page_men', error=True))
+
+@app.route('/mentor/login', methods=['GET'])
+def login_page_men():
+    error = request.args.get('error')
+    return render_template('mentor/login.html', error=error)
         
         
 
 @app.route("/student/login",methods=['POST'])
 def login_student():
-    email=request.json.get('email')
-    password=request.json.get('password')
+    email=request.form.get('email')
+    password=request.form.get('password')
 
     #to check if there exist a valid email and password
     query="SELECT * FROM users WHERE email=%s AND password=%s"
@@ -86,7 +89,7 @@ def login_student():
             'token': token(email,password)
 
         }
-        return make_response(jsonify(response),200)
+        return render_template("mentor/home.html")
     
     else:
         #email or password is invalid
@@ -97,25 +100,33 @@ def login_student():
         
         if userf:
             #wrong password
-            response={
-                'message':'Invalid password'
-            }
-            return make_response(jsonify(response),401)
+            
+            return redirect(url_for('login_page_stu', error=True))
         
         else:
             #not yet registered
-            response={
-                'message':'sign-up first'
-            }
-            return make_response(jsonify(response),401)
+            
+            return redirect(url_for('login_nor_stu', error=True))
+
+@app.route('/student/login',methods=['GET'])
+def login_nor_stu():
+    error=request.args.get('errorreg')
+    return render_template('student/login.html', error=error)
+
+
+@app.route('/student/login', methods=['GET'])
+def login_page_stu():
+    error = request.args.get('errorpass')
+    return render_template('student/login.html', error=error)
 
 #registration part
 @app.route("/student/register",methods=['POST'])
 def register():
-    username=request.json.get('username')
-    password=request.json.get('password')
-    email=request.json.get('email')
-    mobile-no=request.json.get('mobile_no')
+    username=request.form.get('username')
+    password=request.form.get('password')
+    con_password=request.form.get('confirm-password')
+    email=request.form.get('email')
+    mobile-no=request.form.get('mobile_no')
 
     #checking if username already exists
     query='SELECT * FROM users WHERE username=%s'
@@ -124,10 +135,8 @@ def register():
     usere=cursor.fetchone()
 
     if usere:
-        response={
-            'message':'username already exists'
-        }
-        return make_response(jsonify(response),409)
+        
+        return redirect(url_for('register_page_exist', error=True))
     query='SELECT * FROM users WHERE email=%s'
     values=(email,)
     cursor.execute(query,values)
@@ -137,18 +146,48 @@ def register():
         response={
             'message':'acccount already exists'
         }
-        return make_response(jsonify(response),409)
-    
+        return redirect(url_for('register_page_existacc', error=True))
+
+    if con_password!=password:
+        return redirect(url_for('register_page_pass', error=True))
+
     #enter details in the database
     query="INSEERT INTO users (username, password, email)"
     values=(username, password, email)
     cursor.execute(query,values)
     cnx.commit() 
 
-    response={
-        'message':'Registration successful'
-    } 
-    return make_response(jsonify(response),201)
+    
+    return render_template('mentor/home.html')
+
+@app.route('/student/register', methods=['GET'])
+def register_page_exist():
+    error = request.args.get('errorexist')
+    return render_template('student/register.html', error=error)
+
+@app.route('/student/register', methods=['GET'])
+def register_page_existacc():
+    error = request.args.get('erroracc')
+    return render_template('student/register.html', error=error)
+
+@app.route('/student/register', methods=['GET'])
+def register_page_pass():
+    error = request.args.get('erroracc')
+    return render_template('student/register.html', error=error)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__=='__main__':
     app.run(debug=True)
