@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>verification code</title>
+	<style>
+		body {
+			background-image: url("https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/Vd3bj2jPe/videoblocks-tired-woman-working-laptop-computer-at-home-workplace-frustrated-person-working-online-on-computer-at-kitchen-upset-girl-looking-at-laptop-computer-screen-calm-employee-thinking-about-job_bqmx4b_z94_thumbnail-1080_01.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			color: #ffffff;
+		}
+
+		form {
+			margin: auto;
+			width: 35%;
+			height:14rem;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.9);
+			box-shadow: 0px 0px 10px #bfbfbf;
+			border-radius: 5px;
+		}
+
+		h3 {
+			color:#000000;
+			text-align: center;
+			font-size: 25px;
+		}
+		h2 {
+			text-align: center;
+			margin-bottom: 30px;
+			color: black;
+			font-size: 30px;
+			font-weight: bold;
+			text-shadow: 2px 2px 4px #000000;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+			color: #333333;
+		}
+
+		input[type=text], input[type=email], input[type=tel], input[type=password] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: #333333;
+			font-size: 16px;
+		}
+
+		input[type=submit] {
+			background-color: #ff6b6b;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			float: right;
+			font-size: 16px;
+			box-shadow: 2px 2px 4px #bfbfbf;
+		}
+
+		input[type=submit]:hover {
+			background-color: #ff8c8c;
+		}
+	</style>
+</head>
+<body>
+	<h2>Welcome to SheCoder!</h2>
+	<form>
+		
+		<h3>Reset Password</h3>
+		
+
+		<label for="code">Enter verification code</label>
+		<input type="password" id="password" name="code" required>
+		<label for="password">password</label>
+		<input type="password" id="password" name="password" required>
+		<label for="password">confirm password</label>
+		<input type="password" id="confirm_password" name="confirm_password required>
+
+		
+
+		
+		
+		
+		<input type="submit" value="verify">
+	</form>
+	{% if errorpass %}
+	<p style="color: red; font-size: smaller;">Password didn't match.</p>
+	{% endif %}
+
+	{% if errorcode %}
+	<p style="color: red; font-size: smaller;">Incorrect code.</p>
+	{% endif %}
+
+
+</body>
+</html>
