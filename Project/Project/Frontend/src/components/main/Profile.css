@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+} 
+html{
+    font-size: 75.5%;
+    overflow-x: hidden;
+}
+
+section{
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+.head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    z-index: 100;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+.logo{
+    margin-left: -60px;
+    width: 40px;
+}
+.nav>a{
+    position: relative;
+    text-decoration: none ;
+    left: -70px;
+    font-size: 1.6rem;
+    color: black;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    transition: 0.3s;
+}
+.nav>a:hover{
+    opacity: 0.5;
+}
+.left-img>img{
+  width: 380px;
+}
+.left-text{
+  margin-top: 20px;
+}
+.left-text>h3{
+  font-size: 2.4rem;
+}
+.left-text{
+  align-content: center;
+}
+.left-btn>button{
+  width: 400px;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.8rem;
+  background-color: #323946;
+  transition: 0.5s;
+}
+.left-btn>button:hover{
+  background-color: #5f6060;
+}
+.main{
+  display: flex;
+  justify-content: space-between;
+}
+.right{
+  margin-right: 10%;
+}
+.txt{
+  font-size: 3.4rem;
+  font-weight: 600;
+}
+.s-name{
+  font-size: 2rem;
+  font-weight: 600;
+}
+.s-number{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.skill-list{
+  margin-top: -50px;
+}
+.s-head{
+  width: 60rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.s-cont{
+  margin-bottom: 80px;
+}
+.s-bar,.s-per{
+    height: 18px;
+    border-radius: .25rem;
+}
+.s-bar{
+    background-color: rgb(214, 5, 5);
+}
+.s-per{
+    display: block;
+    background-color: rgb(50, 50, 50);
+}
+.s-bar{
+  margin-bottom: 20px;
+}
+.s-s{
+  width: 80%;
+  animation: s-s ease-in-out 3s;
+}
+.s-t{
+  width: 60%;
+  animation: s-t ease-in-out 3s;
+}
+@keyframes s-t {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 60%;
+  }
+}
+@keyframes s-s {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+@keyframes s-m {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+.s-e{
+  width: 70%;
+  animation: s-m ease-in-out 3s;
+}
+.s-m{
+  width: 60%;
+  animation: s-t ease-in-out 3s;
+}
+.rit-tot{
+  margin-top: 20px;
+}
+.rit-tot>h3{
+  font-size: 3.4rem;
+  font-weight: 600;
+}
+.circle-wrap {
+  margin-left: 23rem;
+  margin-top: 5rem;
+  width: 150px;
+  height: 150px;
+  background: #fefcff;
+  border-radius: 50%;
+  border: 1px solid #cdcbd0;
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+
+.circle-wrap .inside-circle {
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  background: #ffc7c7;
+  line-height: 120px;
+  text-align: center;
+  margin-top: 14px;
+  margin-left: 14px;
+  color: black;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}
+.mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: rgb(214, 5, 5);
+}
+
+.mask.full,
+.circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(135deg);
+}
+
+@keyframes fill{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
