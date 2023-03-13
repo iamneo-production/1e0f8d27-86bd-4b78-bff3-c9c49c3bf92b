@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <style>
+        body{
+            font-family: 'Segoe UI',  sans-serif;
+			background-image: url("https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/Vd3bj2jPe/videoblocks-tired-woman-working-laptop-computer-at-home-workplace-frustrated-person-working-online-on-computer-at-kitchen-upset-girl-looking-at-laptop-computer-screen-calm-employee-thinking-about-job_bqmx4b_z94_thumbnail-1080_01.png");
+            background-repeat: no-repeat
+                                                }
+        form{
+
+            margin: auto;
+			width: 30%;
+            height: 50%;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.9);
+			box-shadow: 0px 0px 10px #bfbfbf;
+			border-radius: 5px;
+        }
+        h2 {
+			text-align: center;
+			margin-bottom: 30px;
+			color: black;
+			font-size: 30px;
+			font-weight: bold;
+			text-shadow: 2px 2px 4px #000000;
+		}
+        #hname{
+            box-sizing: border-box;
+            display:inline;
+            
+            
+            border :rem solid;
+            border-radius: 0.5rem;
+
+            font-size: 1.8rem;
+            text-align: center;
+            color: rgb(23, 244, 133);
+
+            margin: 0rem 11rem;
+        }
+        h1{
+            display: block;
+            font-size: 1.5rem;
+            text-align: center;
+            /* border: 3px solid; */
+            
+            
+        }
+       
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+			color: #333333;
+		}
+
+		input[type=text], input[type=email], input[type=tel], input[type=password] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: #333333;
+			font-size: 12px;
+		}
+
+		input[type=submit] {
+			background-color: #ff6b6b;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			float: right;
+			font-size: 12px;
+			box-shadow: 2px 2px 4px #bfbfbf;
+		}
+
+		input[type=submit]:hover {
+			background-color: #ff8c8c;
+		}
+        #sup{
+
+            padding-bottom: 1rem;
+
+            background-color:#ff6b6b;
+
+            color :rgb(255, 255, 255);
+            font-size: 1.5rem;
+        }
+
+        .return{
+            text-align: center;
+            border: px solid;
+        }
+        #re_log{
+
+            color: rgb(0, 193, 242);
+            font-size: 2rem;
+            text-decoration: wavy;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Welcome to SheCoder!</h2>
+    <form >
+
+            <!-- <div id ="hname">
+                <h2>Amazon flipcart</h2>
+            </div> -->
+            <h1>SignUp</h1>
+
+            <div >
+
+                <label for="name">Name</label>
+                <input type="text" class = "input" id = "name" name="name" required >
+                <br>
+                <label for="phone">Mobile Number</label>
+                <input type="text" class = "input" id = "phone" name="phone" required >
+                <br>
+                <label for="email">Email</label>
+                <input type="email" class = "input" id = "email" name="email" required>
+                <br>
+                <label for="password">Password</label>
+                <input type="password" class = "input" id = "password" name="password" required>
+                <br>
+                <label for="confirm_password">Confirm password</label>
+                <input type="password" class = "input" id = "confirm_password" name="confirm_password" required >
+                <br>
+                <input type="submit" class = "input" id = "sup" value="Sign up">
+
+                <p class="return"> 
+                    
+                </p>
+                
+                {% if errorexist %}
+	            <p style="color: red; font-size: smaller;">username already exists.</p>
+	            {% endif %}
+
+                {% if erroracc %}
+	            <p style="color: red; font-size: smaller;">account already exists.</p>
+	            {% endif %}
+
+                {% if errorpass %}
+	            <p style="color: red; font-size: smaller;">Password didn't match.</p>
+	            {% endif %}
+
+
+
+            </div>
+
+    </form>
+</body>
+</html>
